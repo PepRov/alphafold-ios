@@ -12,13 +12,13 @@ Once the peptide sequence is fetched, the notebook runs AlphaFold to predict the
 
 - **Automatic sequence retrieval:** Fetches the latest peptide FASTA file uploaded by PepRop.
 - **Seamless integration:** No manual input needed after sequence upload.
-- **AlphaFold prediction:** Runs state-of-the-art AlphaFold model for 3D structure prediction.
+- **AlphaFold prediction:** Runs state-of-the-art AlphaFold model for 3D peptide structure prediction.
 - **Runs entirely in Google Colab:** No local setup required.
 
 ## Usage
 
-1. Upload your peptide sequence FASTA file via the PepRop iOS app.
-2. Open this Colab notebook.
+1. Input your peptide sequence via the PepRop interactive table keys.
+2. The Colab notebook opens automatically and asks your permission to log in to your Google account.
 3. The notebook automatically retrieves the sequence and runs the AlphaFold prediction.
-4. View and download predicted 3D structures directly from Colab.
+4. View and download the predicted 3D structures directly from Colab.
 
