@@ -1,10 +1,10 @@
 # PepRop + AlphaFold Integration
 
-This Colab notebook enables automatic prediction of 3D peptide structures using AlphaFold, with seamless integration from the iOS app PepRop.
+
 
 ## Overview
 
-The PepRop iOS app allows users to upload peptide sequences directly from their device. This notebook automatically retrieves the uploaded sequence from a public GitHub Gist, eliminating manual file uploads or path setup.
+This Colab notebook enables seamless integration with the iOS app PepRop, automatically loading peptide sequences for 3D structure prediction using AlphaFold.
 
 Once the peptide sequence is fetched, the notebook runs AlphaFold to predict the 3D structure of the peptide.
 
