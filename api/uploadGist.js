@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   const { content, filename } = req.body;
-  const gistID = "YOUR_FIXED_GIST_ID"; // Put your permanent Gist ID here
+  const gistID = "136f7d171bf3e398c01be6a2a51ed074"; // Put your permanent Gist ID here
 
   const response = await fetch(`https://api.github.com/gists/${gistID}`, {
     method: "PATCH",
