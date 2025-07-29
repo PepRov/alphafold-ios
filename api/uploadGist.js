@@ -1,31 +1,38 @@
+// pages/api/uploadGist.js
+
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end();
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Only POST requests allowed" });
+  }
 
   const { content, filename } = req.body;
+  const gistID = "YOUR_FIXED_GIST_ID"; // Put your permanent Gist ID here
 
-  const response = await fetch('https://api.github.com/gists', {
-    method: 'POST',
+  const response = await fetch(`https://api.github.com/gists/${gistID}`, {
+    method: "PATCH",
     headers: {
-      'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github+json',
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      description: "Uploaded from iOS app",
-      public: false,
       files: {
-        [filename || 'sequence.fasta']: {
-          content
-        }
-      }
-    })
+        [filename]: {
+          content,
+        },
+      },
+    }),
   });
 
   const data = await response.json();
 
-  if (response.ok) {
-    res.status(200).json({ gistID: data.id, rawURL: Object.values(data.files)[0].raw_url });
-  } else {
-    res.status(500).json({ error: data });
+  if (!response.ok) {
+    return res.status(response.status).json({ message: data.message });
   }
+
+  return res.status(200).json({
+    gistID: data.id,
+    rawURL: data.files[filename].raw_url,
+  });
 }
+
 
