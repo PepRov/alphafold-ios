@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const response = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
       method: 'PATCH',
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `token ${GITHUB_TOKEN}`, // ✅ Changed from Bearer
         'Content-Type': 'application/json',
         Accept: 'application/vnd.github+json',
       },
@@ -53,8 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ rawUrl });
   } catch (error) {
-    console.error('Unexpected error:', error);
+    console.error('Unexpected error:', (error as Error).message || error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
-
