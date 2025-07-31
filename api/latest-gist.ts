@@ -7,6 +7,13 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'GIST_ID not set in environment' });
   }
 
-  res.status(200).json({ gistID: GIST_ID });
+  const GIST_ID = process.env.GIST_ID;
+
+if (!GIST_ID) {
+  return res.status(500).json({ error: 'GIST_ID not set in environment' });
+}
+
+const rawUrl = `https://gist.githubusercontent.com/PepRov/${GIST_ID}/raw/MYSEQUENCE.fasta`;
+res.status(200).json({ rawUrl }); 
 }
 
