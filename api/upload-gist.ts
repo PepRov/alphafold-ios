@@ -46,7 +46,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
 // --- Log to Google Sheet ---
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // use env variable or fallback
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbx4JGGypS0g-QtoJtDbWYudj1NSXCA97272yP6HIyWGbIPP4K2hYdV1rty8dKKuQVpb/exec"; // use env variable or fallback
 
     try {
       await fetch(sheetUrl, {
