@@ -46,21 +46,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
 // --- Log to Google Sheet ---
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbx4JGGypS0g-QtoJtDbWYudj1NSXCA97272yP6HIyWGbIPP4K2hYdV1rty8dKKuQVpb/exec"; // use env variable or fallback
+const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
+const SECRET_TOKEN = "Jf8vQ2sL9zR4xT1bM6pH3kN0aY7wE5cD"; // Same as in Apps Script
 
-    try {
-      await fetch(sheetUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sequence: sequence,
-          user: req.body.user || 'anonymous',
-          source: 'iOS app',
-        }),
-      });
-    } catch (sheetError) {
-      console.error('Failed to log to Google Sheet:', sheetError);
-    }
+try {
+  const sheetResponse = await fetch(sheetUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      sequence: sequence,
+      user: req.body.user || "anonymous",
+      source: "iOS app",
+      token: SECRET_TOKEN, // ✅ Token included
+    }),
+  });
+
+  const sheetResult = await sheetResponse.text();
+  console.log("📌 Google Sheet response:", sheetResult);
+
+} catch (sheetError) {
+  console.error("Failed to log to Google Sheet:", sheetError);
+}
+
 
 // --------------------------------------
     
