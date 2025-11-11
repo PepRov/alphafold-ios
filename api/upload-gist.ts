@@ -45,7 +45,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Failed to update gist', details: json });
     }
 
+// ===========================
 // --- Log to Google Sheet ---
+// ===========================    
 const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
 const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
 
@@ -67,9 +69,7 @@ try {
 } catch (sheetError) {
   console.error("Failed to log to Google Sheet:", sheetError);
 }
-
-
-// --------------------------------------
+// ==========================================================
     
 
     const rawUrl = json?.files?.[filename]?.raw_url;
