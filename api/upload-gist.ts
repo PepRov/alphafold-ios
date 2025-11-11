@@ -45,6 +45,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Failed to update gist', details: json });
     }
 
+// --- Log to Google Sheet ---
+    const sheetUrl = process.env.SHEET_WEB_APP_URL || "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // use env variable or fallback
+
+    try {
+      await fetch(sheetUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sequence: sequence,
+          user: req.body.user || 'anonymous',
+          source: 'iOS app',
+        }),
+      });
+    } catch (sheetError) {
+      console.error('Failed to log to Google Sheet:', sheetError);
+    }
+
+// --------------------------------------
+    
+
     const rawUrl = json?.files?.[filename]?.raw_url;
 
     if (!rawUrl) {
