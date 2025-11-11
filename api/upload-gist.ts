@@ -47,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
 // --- Log to Google Sheet ---
 const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
-const SECRET_TOKEN = "Jf8vQ2sL9zR4xT1bM6pH3kN0aY7wE5cD"; // Same as in Apps Script
+const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
 
 try {
   const sheetResponse = await fetch(sheetUrl, {
