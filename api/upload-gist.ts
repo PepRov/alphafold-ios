@@ -48,7 +48,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 // ===========================
 // --- Log to Google Sheet ---
 // ===========================    
-const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
+//const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
+const sheetUrl = "https://script.google.com/macros/s/AKfycbyvhS97ODhc2BOH8LTt-vFCwKuP2Nk91Na2c58EidB1kVFp8GjmaPPErLM6UKXIhGTJ/exec"; // AlphaFoldSeqLog3
 const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
 
 try {
