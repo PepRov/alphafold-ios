@@ -51,25 +51,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 const sheetUrl = "https://script.google.com/macros/s/AKfycbxp4ZK4vCJlm_OKltKuXeMfypdKWpQ1om4ak77CXU3tE4_lOBCOm4DNaqpGYLifJorM/exec"; // Paste the Web App URL here
 const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
 
-//try {
-//  const sheetResponse = await fetch(sheetUrl, {
-//    method: "POST",
-//    headers: { "Content-Type": "application/json" },
-//    body: JSON.stringify({
-//      sequence: sequence,
-//      user: req.body.user || "anonymous",
-//      source: "iOS app",
-//      token: SECRET_TOKEN, // ✅ Token included
-//    }),
-//  });
-
-//  const sheetResult = await sheetResponse.text();
-//  console.log("📌 Google Sheet response:", sheetResult);
-
-//} catch (sheetError) {
-//  console.error("Failed to log to Google Sheet:", sheetError);
-//}
-
 try {
   const sheetResponse = await fetch(sheetUrl, {
     method: "POST",
@@ -82,22 +63,13 @@ try {
     }),
   });
 
-  // Parse JSON response from Web App
-  const sheetResult = await sheetResponse.json();
+  const sheetResult = await sheetResponse.text();
   console.log("📌 Google Sheet response:", sheetResult);
-
-  if (sheetResult.status === "success") {
-    const seqLength = sheetResult.length; // ✅ Sequence length from Google Sheet
-    console.log("Sequence length:", seqLength);
-
-    // You can now use seqLength in your code
-  } else {
-    console.error("Error from Google Sheet:", sheetResult.message);
-  }
 
 } catch (sheetError) {
   console.error("Failed to log to Google Sheet:", sheetError);
 }
+
 // ==========================================================
     
 
