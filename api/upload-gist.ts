@@ -48,11 +48,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 // ===========================
 // --- Log to Google Sheet ---
 // ===========================    
-const sheetUrl = "https://script.google.com/macros/s/AKfycbx0yy7yqGOQwQwp3HgveqhwWa75uty1spWSOHC2Ia9BWE2OqpKuT2sdID3b_1B9aKLt/exec"; // AlphaFoldSeqLog3
-const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
+//const SHEET_URL = "https://script.google.com/macros/s/AKfycbx0yy7yqGOQwQwp3HgveqhwWa75uty1spWSOHC2Ia9BWE2OqpKuT2sdID3b_1B9aKLt/exec"; // AlphaFoldSeqLog3
+//const SECRET_TOKEN = "GnAQgG7GICJkESvsXg/1XmzNL0sfnA1I"; // Same as in Apps Script
+const SHEET_URL = process.env.SHEET_URL!;
+const SECRET_TOKEN = process.env.SECRET_TOKEN!;
+
 
 try {
-  const sheetResponse = await fetch(sheetUrl, {
+  const sheetResponse = await fetch(SHEET_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
