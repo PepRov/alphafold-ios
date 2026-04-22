@@ -7,7 +7,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: "GIST_ID not set" });
   }
 
-  const rawUrl = `https://gist.githubusercontent.com/PepRov/${GIST_ID}/raw/MYSEQUENCE.fasta`;
+  const rawUrl = `https://gist.githubusercontent.com/PepRov/${GIST_ID}/raw/MYSEQPepRop.fasta`;
 
   try {
     const gistRes = await fetch(rawUrl);
