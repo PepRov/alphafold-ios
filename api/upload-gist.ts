@@ -19,7 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Missing environment variables' });
   }
 
-  const filename = 'MYSEQUENCE.fasta';
+  const filename = 'MYSEQPepRop.fasta';
 
   try {
     const response = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
