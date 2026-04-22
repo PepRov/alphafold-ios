@@ -8,7 +8,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).send('GIST_ID not set in environment');
   }
 
-  const rawUrl = `https://gist.githubusercontent.com/PepRov/${GIST_ID}/raw/MYSEQUENCE.fasta`;
+  const rawUrl = `https://gist.githubusercontent.com/PepRov/${GIST_ID}/raw/MYSEQPepRop.fasta`;
 
   try {
     const response = await fetch(rawUrl);
